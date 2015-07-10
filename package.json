@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/cherrry/xml-objtree/issues"
   },
-  "homepage": "https://github.com/cherrry/xml-objtree"
+  "homepage": "https://github.com/cherrry/xml-objtree",
+  "dependencies": {
+    "xmldom": "^0.1.19"
+  }
 }

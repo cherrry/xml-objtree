@@ -2,6 +2,9 @@
 //  XML.ObjTree -- XML source code from/to JavaScript object like E4X
 // ========================================================================
 
+var xmldom = require('xmldom');
+var DOMParser = xmldom.DOMParser;
+
 if ( typeof(XML) == 'undefined' ) XML = function() {};
 
 //  constructor
@@ -12,7 +15,7 @@ XML.ObjTree = function () {
 
 //  class variables
 
-XML.ObjTree.VERSION = "0.24";
+XML.ObjTree.VERSION = "0.24.0";
 
 //  object prototype
 
@@ -24,18 +27,9 @@ XML.ObjTree.prototype.overrideMimeType = 'text/xml';
 
 XML.ObjTree.prototype.parseXML = function ( xml ) {
     var root;
-    if ( window.DOMParser ) {
-        var xmldom = new DOMParser();
-//      xmldom.async = false;           // DOMParser is always sync-mode
-        var dom = xmldom.parseFromString( xml, "application/xml" );
-        if ( ! dom ) return;
-        root = dom.documentElement;
-    } else if ( window.ActiveXObject ) {
-        xmldom = new ActiveXObject('Microsoft.XMLDOM');
-        xmldom.async = false;
-        xmldom.loadXML( xml );
-        root = xmldom.documentElement;
-    }
+    var dom = (new DOMParser()).parseFromString( xml, "application/xml" );
+    if ( ! dom ) return;
+    root = dom.documentElement;
     if ( ! root ) return;
     return this.parseDOM( root );
 };
