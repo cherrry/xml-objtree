@@ -1,2 +1,1 @@
-var ObjTree = require('./src/ObjTree.js');
-module.exports = new ObjTree();
+module.exports = require('./src/ObjTree.js');
