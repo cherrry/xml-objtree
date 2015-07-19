@@ -5,7 +5,7 @@
 var xmldom = require('xmldom');
 var DOMParser = xmldom.DOMParser;
 
-if ( typeof(XML) == 'undefined' ) XML = function() {};
+var XML = function() {};
 
 //  constructor
 
